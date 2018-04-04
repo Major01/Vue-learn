@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>example methods Demo</title>
+    <script type="text/javascript" src="../../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>example methods Demo</h1>
+    <hr>
+    <div id="app">
+        
+    </div>
+    <p><button onclick="destroy()">删除挂载</button></p>
+    <p><button onclick="reload()">更新挂载</button></p>
+    <script type="text/javascript">
+    var major = Vue.extend({
+        template:`<p>{{message}}</p>`,
+        data:function(){
+            return {
+                message: 'Hello,i am major_'
+            }
+        },
+        mounted: function(){
+            console.log("mounted被创建了")
+        },
+        destroyed: function(){
+            console.log("destroyed被卸载了")
+        },
+        updated: function(){
+            console.log("forceUpdate已更新")
+        }
+    })
+
+    var vm = new major().$mount('#app');
+    // 删除挂载
+    function destroy(){
+        vm.$destroy();
+    }
+    // 更新
+    function reload(){
+        vm.$forceUpdate();
+    }
+    </script>
+</body>
+</html>

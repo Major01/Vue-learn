@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>methods方法实例</title>
+    <script type="text/javascript" src="../../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>methods方法实例</h1>
+    <p style="margin-left:200px">-----组件要使用@click.native，$event可打印详细dom结构</p>
+    <hr>
+    <div id="app">
+        <p>{{message}}</p>
+        <p><button @click='add(1,$event)'>add</button></p>
+        <p><btn @click.native='add(1,$event)'></btn></p>
+    </div>
+    <script type="text/javascript">
+    var btn = {
+        template:`<button>组件add</button>`
+    }
+    var app = new Vue({
+        el:'#app',
+        data:{
+            message:0
+        },
+        methods:{
+            add:function(num,e){        
+                if(num != ''){
+                    this.message += num;
+                }else{
+                    this.message ++;
+                }
+                console.log(e);
+            }
+        },
+        components:{
+            btn
+        }
+    })
+    </script>
+</body>
+</html>

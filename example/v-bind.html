@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>v-bind</title>
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+
+<body>
+    <h1>v-bind实例</h1>
+    <hr>
+    <div id="app">
+       <img :src="imgurl" alt="">
+       <a v-bind:href="hrefurl" target="_blank">链接</a>
+       <hr>
+       <h1>v-bind绑定class</h1>
+       <div :class="className">单独绑定class</div>
+       <div :class="{classA:isOk}">选择绑定class</div>
+       <div :class="[classA,classB]">绑定多个class</div>
+    </div>
+    <style>
+        .classA{
+            color: red
+        }
+        .classB{
+            font-size:40px
+        }
+    </style>
+    <script type="text/javascript">
+    var app = new Vue({
+        el:'#app',
+        data:{
+           imgurl:'./api_100.png',
+           hrefurl:'http://www.baidu.com',
+           className:'classA',
+           isOk:true,
+           classA:'classA',
+           classB:'classB'
+        }
+    })
+    </script>
+</body>
+</html>

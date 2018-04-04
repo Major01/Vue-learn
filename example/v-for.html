@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>v-for实例</title>
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>v-for实例</h1>
+    <hr>
+    <div id="app">
+        <ul>
+            <li v-for="item in items1">{{item}}</li>
+        </ul>
+        <hr>
+        <ul>
+            <li v-for="(item,index) in students">{{index+1}}、姓名：{{item.name}}；性别：{{item.six}};年龄：{{item.age}}</li>
+        </ul>
+    </div>
+    <script type="text/javascript">
+    var app = new Vue({
+        el:'#app',
+        data:{
+           items:[23,32,40,7,40,76,80],
+           students:[{name:'major',age:'18',six:'man'},{name:'a',age:'23',six:'woman'}]
+        },
+        computed:{
+            items1:function(){
+                return this.items.sort(bigsort);
+            }
+        }
+    })
+    function bigsort(a,b){
+        return a-b;
+    }
+    </script>
+</body>
+</html>

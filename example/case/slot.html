@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>slot内置组件</title>
+    <script type="text/javascript" src="../../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>slot内置组件（插槽）</h1>
+    <hr>
+    <div id="app">
+        <major>
+            <span slot='blogurl'>{{major.blogurl}}</span>
+            <span slot='netName'>{{major.netName}}</span>
+            <span slot='skill'>{{major.skill}}</span>
+        </major>
+    </div>
+    <template id='tep'>
+        <div>
+            <p>博客地址：<slot name='blogurl'></slot> </p>
+            <p>网名：<slot name='netName'></slot></p>
+            <p>技术类型：<slot name='skill'></slot></p>
+        </div>
+    </template>
+    <script type="text/javascript">
+    var major = {
+        template: "#tep"
+    }
+    var app = new Vue({
+        el:'#app',
+        data:{
+            major:{
+                blogurl: "http://blog.toolsroom.org",
+                netName:"major's Notes",
+                skill:"web前端"
+            }
+        },
+        components:{
+            major
+        }
+    })
+    </script>
+</body>
+</html>

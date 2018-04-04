@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>vue.directive.html</title>
+    <script type="text/javascript" src="../../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>vue.directive(自定义指令)实例</h1>
+    <hr>
+    <div id="app">
+        <div v-major='color'>{{num}}</div>
+        <p><button @click='add'>增加</button><button @click='jian'>减少</button></p>
+    </div>
+    <script type="text/javascript">
+    // Vue.directive('major',function(el,binding){
+    //     console.log(el);
+    //     console.log(binding);
+    //     el.style="color:"+binding.value;
+    // })
+    //  Vue.directive钩子函数
+        Vue.directive('major',{
+            bind: function(){ //指令绑定时执行
+                console.log('1-bind');
+            },
+            inserted: function(){ //所绑定元素插入父节点时执行
+                console.log('2-inserted');
+            },
+            update: function(){  // 元素值发生变化时调用
+                console.log('3-update');
+            },
+            componentUpdated: function(){ // 所有节点值发生变化时调用
+                console.log('4-componentUpdated');
+            },
+            unbind: function(){ //解绑时调用
+                console.log('5-unbind');
+            }
+        })
+    var app = new Vue({
+        el:'#app',
+        data:{
+            num: 0,
+            color: 'red'
+        },
+        methods:{
+            add: function(){
+                this.num ++;
+            },
+            jian: function(){
+                if(this.num > 0){
+                    this.num --;
+                }
+            }
+        }
+    })
+    </script>
+</body>
+</html>

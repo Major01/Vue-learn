@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>v-if</title>
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>v-on&v-model实例</h1>
+    <hr>
+    <div id="app">
+        本场比赛得分：{{fenshu}} <br>
+        添加分数：{{inputval}}
+        <p>
+            <button v-on:click="add">加分</button>
+            <button v-on:click="jian">减分</button>
+            <input type="text" @keyup.enter="enterOn" v-model="inputval">
+        </p>
+    </div>
+    <script type="text/javascript">
+    var app = new Vue({
+        el:'#app',
+        data:{
+           isLogin: false,
+           fenshu: 0,
+           inputval: ''
+        },
+        methods:{
+            add: function(){
+                this.fenshu++;
+            },
+            jian: function(){
+                if(this.fenshu > 0 ){
+                    this.fenshu--;
+                }
+            },
+            enterOn: function(){
+                if(this.inputval != ''){
+                    this.fenshu = parseInt(this.inputval) + this.fenshu;
+                }
+            }
+        }
+    })
+    </script>
+</body>
+</html>
